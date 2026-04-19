@@ -7,6 +7,9 @@ OUTPUTS := outputs
 
 TARGET ?= feminine
 
+PACKAGE_VERSION := 2.7.4
+
+
 .PHONY: all feminine neutral masculine setup copy transform check backup replace clean
 
 all: copy transform replace
@@ -61,6 +64,12 @@ restore:
 
 replace: backup check
 	cp "$(OUTPUTS)/assets_$(TARGET)/$(ASSETS_FILE)" "$(GAME_FOLDER)/$(ASSETS_FILE)"
+
+package:
+	@for target in feminine neutral masculine; do \
+		zip -j "yourchronicle_patch_$(PACKAGE_VERSION)_$$target.zip" \
+		"outputs/assets_$$target/resources.assets"; \
+	done
 
 clean:
 	rm -rf $(INPUTS) $(PROCESSED) $(OUTPUTS)
