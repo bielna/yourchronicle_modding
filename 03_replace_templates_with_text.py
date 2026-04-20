@@ -1,10 +1,13 @@
 import os
 import csv
 
-INPUT_FILE = 'processed/text_with_templates.txt'
-OUTPUT_FILE = 'processed/text_{}.txt'
+INPUT_FILE = 'processed/{}_with_templates.txt'
+OUTPUT_FILE = 'processed/{}_{}.txt'
 LOG_FILE = 'processed/log_new_lines_{}.txt'
 TARGETS = ['feminine', 'masculine', 'neutral']
+
+ASSETS_OBJECT_NAMES = ['[Translation]Upgrade_Action_Name',
+                       '[Translation]Dungeon_DungeonName']
 
 LINE_ID_INDEX = 0
 TEXT_EN_INDEX = 3
@@ -178,19 +181,19 @@ def write_file_with_substitutions(output_file, rows):
         for row in rows:
             writer.writerow(row)
 
+def run_process_file(asset_object_name, target, log_file):
+        input_file = INPUT_FILE.format(asset_object_name)
+        output_file = OUTPUT_FILE.format(asset_object_name, target)
 
-if __name__ == '__main__':
-    if not os.path.exists(INPUT_FILE):
-        raise FileNotFoundError(f'File with template text not found: {INPUT_FILE}')
-
-    print(f'Applying {len(templates)} substitution rules')
-
-    for target in TARGETS:
-        log_file = LOG_FILE.format(target)
-        output_file = OUTPUT_FILE.format(target)
-
-        with open(log_file, 'w', encoding='utf-8') as _f:
-            rows = process_file(INPUT_FILE, target, _f)
+        with open(log_file, 'a', encoding='utf-8') as _f:
+            rows = process_file(input_file, target, _f)
         write_file_with_substitutions(output_file, rows)
 
-        print(f'All substitutions applied for target \'{target}\'')
+if __name__ == '__main__':
+    print(f'Applying {len(templates)} substitution rules')
+    for asset_object_name in ASSETS_OBJECT_NAMES:
+        for target in TARGETS:
+            log_file = LOG_FILE.format(target)
+            run_process_file(asset_object_name, target, log_file)
+
+            print(f'All substitutions applied for object {asset_object_name} with target \'{target}\'')

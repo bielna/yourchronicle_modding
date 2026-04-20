@@ -37,13 +37,17 @@ transform:
 	python 05_additional_patch.py
 
 check:
-	@if diff -q "$(PROCESSED)/text_original.txt" "$(PROCESSED)/text_masculine.txt" > /dev/null; then \
-		echo "Re-generated files are identical"; \
-	else \
-		echo "[!] Re-generated files differ"; \
-		diff -u "$(PROCESSED)/text_original.txt" "$(PROCESSED)/text_masculine.txt"; \
-		exit 1; \
-	fi
+	@for name in "[Translation]Upgrade_Action_Name" "[Translation]Dungeon_DungeonName"; do \
+		orig="$(PROCESSED)/$${name}_original.txt"; \
+		gen="$(PROCESSED)/$${name}_masculine.txt"; \
+		if diff -q "$$orig" "$$gen" > /dev/null; then \
+			echo "$$name: OK (identical)"; \
+		else \
+			echo "[!] $$name: differs"; \
+			diff -u "$$orig" "$$gen"; \
+			exit 1; \
+		fi; \
+	done
 
 backup:
 	@if [ -f "$(GAME_FOLDER)/$(ASSETS_FILE)_backup" ]; then \

@@ -1,9 +1,12 @@
 import csv
 import re
 
-INPUT_FILE = 'processed/text_original.txt'
-OUTPUT_FILE = 'processed/text_with_templates.txt'
+INPUT_FILE = 'processed/{}_original.txt'
+OUTPUT_FILE = 'processed/{}_with_templates.txt'
 LOG_FILE = 'processed/log_changes.txt'
+
+ASSETS_OBJECT_NAMES = ['[Translation]Upgrade_Action_Name',
+                       '[Translation]Dungeon_DungeonName']
 
 LINE_ID_INDEX = 0
 TEXT_EN_INDEX = 3
@@ -135,7 +138,9 @@ rules = [
     {
         'find': r'\bswordsman\b',
         'replace': '__SWORD_USER_TERM__',
-        'include': ['talkSpearsmithA']
+        'include': ['talkSpearsmithA',
+                    'training_roomG',
+                    'swordClassAdvanced']
     },
     {
         'find': r'\bladykiller\b',
@@ -212,8 +217,12 @@ def write_file_with_templates(output_file, rows):
 if __name__ == '__main__':
     print(f'Applying {len(rules)} placeholder rules')
 
-    with open(LOG_FILE, 'w', encoding='utf-8') as _f:
-        rows = process_file(INPUT_FILE, _f)
-    write_file_with_templates(OUTPUT_FILE, rows)
+    for asset_object_name in ASSETS_OBJECT_NAMES:
+        input_file = INPUT_FILE.format(asset_object_name)
+        output_file = OUTPUT_FILE.format(asset_object_name)
 
-    print('All placeholders applied')
+        with open(LOG_FILE, 'a', encoding='utf-8') as _f:
+            rows = process_file(input_file, _f)
+        write_file_with_templates(output_file, rows)
+
+        print(f'All placeholders applied to {asset_object_name}')
