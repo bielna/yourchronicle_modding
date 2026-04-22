@@ -143,12 +143,16 @@ rules = [
                     'swordClassAdvanced']
     },
     {
-        'find': r'\bladykiller\b',
-        'replace': '__STRONG_TERM__'
+        'find': r'\bA ladykiller\b',
+        'replace': '__STRONG_TERM_CAPITAL__'
     },
     {
         'find': r'\bSandwich Man\b',
         'replace': '__SANDWICH_TERM__'
+    },
+    {
+        'find': r'\bgood men\b',
+        'replace': '__GOOD_PEOPLE__'
     },
     {
         'find': r'\bmister\b',

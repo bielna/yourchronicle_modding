@@ -120,15 +120,20 @@ templates = {
         'feminine': 'swordswoman',
         'neutral': 'swordfighter'
     },
-    '__STRONG_TERM__': {
-        'masculine': 'ladykiller',
-        'feminine': 'muscle lady',
-        'neutral': 'powerhouse'
+    '__STRONG_TERM_CAPITAL__': {
+        'masculine': 'A ladykiller',
+        'feminine': 'You look pretty strong now',
+        'neutral': 'You look pretty strong now'
     },
     '__SANDWICH_TERM__': {
         'masculine': 'Sandwich Man',
         'feminine': 'Sandwich Lady',
         'neutral': 'Sandwich Friend'
+    },
+    '__GOOD_PEOPLE__': {
+        'masculine': 'good men',
+        'feminine': 'good people',
+        'neutral': 'good people'
     },
     '__MC_TITLE_TERM__': {
         'masculine': 'mister',
