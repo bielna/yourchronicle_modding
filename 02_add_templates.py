@@ -6,7 +6,9 @@ OUTPUT_FILE = 'processed/{}_with_templates.txt'
 LOG_FILE = 'processed/log_changes.txt'
 
 ASSETS_OBJECT_NAMES = ['[Translation]Upgrade_Action_Name',
-                       '[Translation]Dungeon_DungeonName']
+                       '[Translation]Dungeon_DungeonName',
+                       '[Translation]Title_Name',
+                       '[Translation]Routine_Name']
 
 LINE_ID_INDEX = 0
 TEXT_EN_INDEX = 3
@@ -110,30 +112,50 @@ rules = [
         'include': ['A4EventB3']
     },
     {
+        'find': r'\bhe needs\b',
+        'replace': '__MC_PRONOUN_SUBJECT_NEED__',
+        'include': ['A15swordKing']
+    },
+    {
+        'find': r'\bHe seems\b',
+        'replace': '__MC_PRONOUN_SUBJECT_SEEM_CAPITAL__',
+        'include': ['theCleaner']
+    },
+    {
+        'find': r'\bis he\b',
+        'replace': '__MC_PRONOUN_SUBJECT_BE_INTERROGATIVE__',
+        'include': ['eatEgg']
+    },
+    {
         'find': r'\bhe\b',
         'replace': '__MC_PRONOUN_SUBJECT__',
         'include': ['A4EventB3',
                     'C6SigurdsSoliloquyFather',
-                    'C6SigurdsSoliloquyDestiny']
+                    'C6SigurdsSoliloquyDestiny',
+                    'A15swordKing',
+                    'eatEgg']
     },
     {
         'find': r'\bHe\b',
         'replace': '__MC_PRONOUN_SUBJECT_CAPITAL__',
         'include': ['C6SigurdsSoliloquyFather',
-                    'C6SigurdsSoliloquyDestiny']
+                    'C6SigurdsSoliloquyDestiny',
+                    'eatEgg']
     },
     {
         'find': r'\bhim\b',
         'replace': '__MC_PRONOUN_OBJECT__',
         'include': ['talkVillagerE',
                     'C6SigurdsSoliloquyFather',
-                    'C6SigurdsSoliloquyDestiny']
+                    'C6SigurdsSoliloquyDestiny',
+                    'A15swordKing']
     },
     {
         'find': r'\bhis\b',
         'replace': '__MC_PRONOUN_POSSESSIVE__',
         'include': ['C6SigurdsSoliloquyFather',
-                    'C6SigurdsSoliloquyDestiny']
+                    'C6SigurdsSoliloquyDestiny',
+                    'A15swordKing']
     },
     {
         'find': r'\bswordsman\b',
@@ -161,6 +183,16 @@ rules = [
     {
         'find': r'\bMister\b',
         'replace': '__MC_TITLE_TERM_CAPITAL__'
+    },
+    {
+        'find': r'\bstrong man\b',
+        'replace': '__MC_DRAGONSLAYER_STRONG_TERM__',
+        'include': ['dragonSlayer']
+    },
+    {
+        'find': r'\bking\b',
+        'replace': '__MC_BEAST_SOVEREIGN_TERM__',
+        'include': ['beastKing']
     }
 ]
 

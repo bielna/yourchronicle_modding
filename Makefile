@@ -34,13 +34,12 @@ transform:
 	python 02_add_templates.py
 	python 03_replace_templates_with_text.py
 	python 04_repack_assets.py
-	python 05_additional_patch.py
 
 check:
-	@for name in "[Translation]Upgrade_Action_Name" "[Translation]Dungeon_DungeonName"; do \
+	@for name in "[Translation]Upgrade_Action_Name" "[Translation]Dungeon_DungeonName" "[Translation]Title_Name" "[Translation]Routine_Name"; do \
 		orig="$(PROCESSED)/$${name}_original.txt"; \
 		gen="$(PROCESSED)/$${name}_masculine.txt"; \
-		if diff -q "$$orig" "$$gen" > /dev/null; then \
+		if diff "$$orig" "$$gen" > /dev/null; then \
 			echo "$$name: OK (identical)"; \
 		else \
 			echo "[!] $$name: differs"; \

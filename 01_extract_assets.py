@@ -4,7 +4,9 @@ ASSETS_PATH = 'inputs/resources.assets'
 OUTPUT_FILE = 'processed/{}_original.txt'
 
 ASSETS_OBJECT_NAMES = ['[Translation]Upgrade_Action_Name',
-                       '[Translation]Dungeon_DungeonName']
+                       '[Translation]Dungeon_DungeonName',
+                       '[Translation]Title_Name',
+                       '[Translation]Routine_Name']
 
 
 def extract_original_text(assets_path):
@@ -20,7 +22,7 @@ def extract_original_text(assets_path):
             continue
 
         instance = obj.parse_as_object()
-        text_to_patch.append((instance.m_Name, instance.m_Script))
+        text_to_patch.append((instance.m_Name, instance.m_Script.replace('\r', '')))
 
     return text_to_patch
 

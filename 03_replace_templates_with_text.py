@@ -7,7 +7,9 @@ LOG_FILE = 'processed/log_new_lines_{}.txt'
 TARGETS = ['feminine', 'masculine', 'neutral']
 
 ASSETS_OBJECT_NAMES = ['[Translation]Upgrade_Action_Name',
-                       '[Translation]Dungeon_DungeonName']
+                       '[Translation]Dungeon_DungeonName',
+                       '[Translation]Title_Name',
+                       '[Translation]Routine_Name']
 
 LINE_ID_INDEX = 0
 TEXT_EN_INDEX = 3
@@ -95,6 +97,21 @@ templates = {
         'feminine': 'she wants',
         'neutral': 'they want'
     },
+    '__MC_PRONOUN_SUBJECT_NEED__': {
+        'masculine': 'he needs',
+        'feminine': 'she needs',
+        'neutral': 'they need'
+    },
+    '__MC_PRONOUN_SUBJECT_SEEM_CAPITAL__': {
+        'masculine': 'He seems',
+        'feminine': 'She seems',
+        'neutral': 'They seem'
+    },
+    '__MC_PRONOUN_SUBJECT_BE_INTERROGATIVE__': {
+        'masculine': 'is he',
+        'feminine': 'is she',
+        'neutral': 'are they'
+    },
     '__MC_PRONOUN_SUBJECT__': {
         'masculine': 'he',
         'feminine': 'she',
@@ -145,6 +162,16 @@ templates = {
         'feminine': 'Miss',
         'neutral': 'Friend'
     },
+    '__MC_DRAGONSLAYER_STRONG_TERM__': {
+        'masculine': 'strong man',
+        'feminine': 'strong woman',
+        'neutral': 'one'
+    },
+    '__MC_BEAST_SOVEREIGN_TERM__': {
+        'masculine': 'king',
+        'feminine': 'queen',
+        'neutral': 'sovereign'
+    }
 }
 
 
