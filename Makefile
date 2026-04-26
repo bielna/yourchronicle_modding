@@ -62,8 +62,7 @@ restore:
 		cp "$(GAME_FOLDER)/$(ASSETS_FILE)_backup" "$(GAME_FOLDER)/$(ASSETS_FILE)"; \
 		echo "Backup restored"; \
 	else \
-		echo "No backup found"; \
-		exit 1; \
+		echo "No backup found, nothing restored"; \
 	fi
 
 replace: backup check
