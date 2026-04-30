@@ -1,5 +1,7 @@
 import UnityPy
 
+from encoding_utils import decode_translation
+
 ASSETS_PATH = 'inputs/resources.assets'
 OUTPUT_FILE = 'processed/{}_original.txt'
 
@@ -22,7 +24,8 @@ def extract_original_text(assets_path):
             continue
 
         instance = obj.parse_as_object()
-        text_to_patch.append((instance.m_Name, instance.m_Script.replace('\r', '')))
+        script = decode_translation(instance.m_Script)
+        text_to_patch.append((instance.m_Name, script.replace('\r', '')))
 
     return text_to_patch
 

@@ -7,7 +7,9 @@ OUTPUTS := outputs
 
 TARGET ?= feminine
 
-PACKAGE_VERSION := 2.7.4
+PACKAGE_VERSION ?= 2.7.6
+GAME_VERSION := 2.7.6
+BACKUP_FILE := $(GAME_FOLDER)/$(ASSETS_FILE)_backup_$(GAME_VERSION)
 
 
 .PHONY: all feminine neutral masculine setup copy transform check backup replace clean
@@ -50,19 +52,19 @@ check:
 	done
 
 backup:
-	@if [ -f "$(GAME_FOLDER)/$(ASSETS_FILE)_backup" ]; then \
-		echo "Backup already exists"; \
+	@if [ -f "$(BACKUP_FILE)" ]; then \
+		echo "Backup already exists for $(GAME_VERSION)"; \
 	else \
-		cp "$(GAME_FOLDER)/$(ASSETS_FILE)" "$(GAME_FOLDER)/$(ASSETS_FILE)_backup"; \
-		echo "Backup created"; \
+		cp "$(GAME_FOLDER)/$(ASSETS_FILE)" "$(BACKUP_FILE)"; \
+		echo "Backup created for $(GAME_VERSION)"; \
 	fi
 
 restore:
-	@if [ -f "$(GAME_FOLDER)/$(ASSETS_FILE)_backup" ]; then \
-		cp "$(GAME_FOLDER)/$(ASSETS_FILE)_backup" "$(GAME_FOLDER)/$(ASSETS_FILE)"; \
-		echo "Backup restored"; \
+	@if [ -f "$(BACKUP_FILE)" ]; then \
+		cp "$(BACKUP_FILE)" "$(GAME_FOLDER)/$(ASSETS_FILE)"; \
+		echo "Backup restored for $(GAME_VERSION)"; \
 	else \
-		echo "No backup found, nothing restored"; \
+		echo "No backup found for $(GAME_VERSION), nothing restored"; \
 	fi
 
 replace: backup check

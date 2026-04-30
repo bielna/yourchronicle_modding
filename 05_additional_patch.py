@@ -1,6 +1,8 @@
 import os
 import UnityPy
 
+from encoding_utils import decode_translation, encode_translation
+
 ASSETS_PATH = 'outputs/assets_{}/resources.assets'
 TARGETS = ['feminine', 'masculine', 'neutral']
 
@@ -44,20 +46,20 @@ def patch_routine_name(assets_path, target):
 
         instance = obj.parse_as_object()
 
-        text_to_patch = instance.m_Script
+        script = decode_translation(instance.m_Script)
 
         for replacement in REPLACEMENTS:
             original_text = replacement['original']
             new_text = replacement['new'][target]
 
-            if original_text not in instance.m_Script:
+            if original_text not in script:
                 raise ValueError(
                     f'Expected text {original_text} not found in {ASSETS_OBJECT_NAME} for target {target}'
                 )
 
-            text_to_patch = text_to_patch.replace(original_text, new_text)
+            script = script.replace(original_text, new_text)
 
-        instance.m_Script = text_to_patch
+        instance.m_Script = encode_translation(script)
         obj.patch(instance)
 
 

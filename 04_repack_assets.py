@@ -1,6 +1,8 @@
 import os
 import UnityPy
 
+from encoding_utils import encode_translation
+
 INPUT_ASSETS_PATH = 'inputs/resources.assets'
 INPUT_TEXT_FILE = 'processed/{}_{}.txt'
 OUTPUT_ASSETS_FOLDER = 'outputs/assets_{}'
@@ -30,7 +32,7 @@ def repack_text_into_assets(assets_path, target):
         with open(text_file, 'r', encoding='utf-8') as _f:
             new_text = _f.read()
 
-        instance.m_Script = new_text
+        instance.m_Script = encode_translation(new_text)
         obj.patch(instance)
 
         print(f'Updated {assets_path} using text {text_file}')
