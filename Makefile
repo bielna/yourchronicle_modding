@@ -7,8 +7,8 @@ OUTPUTS := outputs
 
 TARGET ?= feminine
 
-PACKAGE_VERSION ?= 2.7.6
-GAME_VERSION := 2.7.6
+PACKAGE_VERSION ?= 2.7.8
+GAME_VERSION := 2.7.8
 BACKUP_FILE := $(GAME_FOLDER)/$(ASSETS_FILE)_backup_$(GAME_VERSION)
 
 
@@ -72,6 +72,7 @@ replace: backup check
 
 package:
 	@for target in feminine neutral masculine; do \
+		echo "Creating yourchronicle_patch_$(PACKAGE_VERSION)_$$target.zip"; \
 		zip -j "yourchronicle_patch_$(PACKAGE_VERSION)_$$target.zip" \
 		"outputs/assets_$$target/resources.assets"; \
 	done

@@ -204,6 +204,9 @@ def process_file(input_file, log_file):
         reader = csv.reader(_f)
 
         for row in reader:
+            if not row:
+                continue
+
             line_id = row[LINE_ID_INDEX]
             text_en = row[TEXT_EN_INDEX]
 
