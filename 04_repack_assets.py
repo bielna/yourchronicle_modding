@@ -11,7 +11,8 @@ OUTPUT_ASSETS_FILE = 'resources.assets'
 ASSETS_OBJECT_NAMES = ['[Translation]Upgrade_Action_Name',
                        '[Translation]Dungeon_DungeonName',
                        '[Translation]Title_Name',
-                       '[Translation]Routine_Name']
+                       '[Translation]Routine_Name',
+                       '[Translation]Dungeon_AllyName']
 
 TARGETS = ['feminine', 'masculine', 'neutral']
 

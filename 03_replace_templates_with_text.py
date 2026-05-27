@@ -9,7 +9,8 @@ TARGETS = ['feminine', 'masculine', 'neutral']
 ASSETS_OBJECT_NAMES = ['[Translation]Upgrade_Action_Name',
                        '[Translation]Dungeon_DungeonName',
                        '[Translation]Title_Name',
-                       '[Translation]Routine_Name']
+                       '[Translation]Routine_Name',
+                       '[Translation]Dungeon_AllyName']
 
 LINE_ID_INDEX = 0
 TEXT_EN_INDEX = 3
@@ -131,6 +132,11 @@ templates = {
         'masculine': 'his',
         'feminine': 'her',
         'neutral': 'their'
+    },
+    '__MC_PRONOUN_OBJECT_REFLECTIVE__': {
+        'masculine': 'himself',
+        'feminine': 'herself',
+        'neutral': 'themself'
     },
     '__SWORD_USER_TERM__': {
         'masculine': 'swordsman',

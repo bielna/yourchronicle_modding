@@ -8,7 +8,8 @@ OUTPUT_FILE = 'processed/{}_original.txt'
 ASSETS_OBJECT_NAMES = ['[Translation]Upgrade_Action_Name',
                        '[Translation]Dungeon_DungeonName',
                        '[Translation]Title_Name',
-                       '[Translation]Routine_Name']
+                       '[Translation]Routine_Name',
+                       '[Translation]Dungeon_AllyName']
 
 
 def extract_original_text(assets_path):

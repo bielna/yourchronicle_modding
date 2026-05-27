@@ -8,7 +8,8 @@ LOG_FILE = 'processed/log_changes.txt'
 ASSETS_OBJECT_NAMES = ['[Translation]Upgrade_Action_Name',
                        '[Translation]Dungeon_DungeonName',
                        '[Translation]Title_Name',
-                       '[Translation]Routine_Name']
+                       '[Translation]Routine_Name',
+                       '[Translation]Dungeon_AllyName']
 
 LINE_ID_INDEX = 0
 TEXT_EN_INDEX = 3
@@ -133,7 +134,9 @@ rules = [
                     'C6SigurdsSoliloquyFather',
                     'C6SigurdsSoliloquyDestiny',
                     'A15swordKing',
-                    'eatEgg']
+                    'eatEgg',
+                    'A13Quarrel_P1',
+                    'A13Quarrel_C1']
     },
     {
         'find': r'\bHe\b',
@@ -148,14 +151,25 @@ rules = [
         'include': ['talkVillagerE',
                     'C6SigurdsSoliloquyFather',
                     'C6SigurdsSoliloquyDestiny',
-                    'A15swordKing']
+                    'A15swordKing',
+                    'A12TalkBHG4',
+                    'A13Quarrel_T1',
+                    'A13Quarrel_P1',
+                    'A13Quarrel_C1']
     },
     {
         'find': r'\bhis\b',
         'replace': '__MC_PRONOUN_POSSESSIVE__',
         'include': ['C6SigurdsSoliloquyFather',
                     'C6SigurdsSoliloquyDestiny',
-                    'A15swordKing']
+                    'A15swordKing',
+                    'A13Quarrel_T1',
+                    'A13Quarrel_P1']
+    },
+    {
+        'find': r'\bhimself\b',
+        'replace': '__MC_PRONOUN_OBJECT_REFLECTIVE__',
+        'include': ['A13Quarrel_C1']
     },
     {
         'find': r'\bswordsman\b',
