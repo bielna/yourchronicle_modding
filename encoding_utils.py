@@ -14,7 +14,6 @@ def find_key(encrypted, plaintext=PLAINTEXT):
 
 def decode_translation(text):
     encrypted = base64.b64decode(text)
-    find_key(encrypted)
     decrypted = xor_bytes(encrypted)
     return decrypted.decode('utf-8')
 

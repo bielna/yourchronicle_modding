@@ -53,6 +53,11 @@ templates = {
         'feminine': 'woman',
         'neutral': 'person'
     },
+    '__MC_TITLE_CAPITAL__': {
+        'masculine': 'SIR',
+        'feminine': "MADAM",
+        'neutral': 'SER'
+    },
     '__MC_SOMEONE_TERM__': {
         'masculine': 'guy',
         'feminine': 'gal',

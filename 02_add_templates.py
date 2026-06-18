@@ -63,6 +63,11 @@ rules = [
                     'talkLorem']
     },
     {
+        'find': r'\bSIR\b',
+        'replace': '__MC_TITLE_CAPITAL__',
+        'include': ['A15talkCoreA']
+    },
+    {
         'find': r'\ba guy\b',
         'replace': '__MC_A_SOMEONE_TERM__',
         'include': ['A11EventCommonA1']
@@ -136,7 +141,8 @@ rules = [
                     'A15swordKing',
                     'eatEgg',
                     'A13Quarrel_P1',
-                    'A13Quarrel_C1']
+                    'A13Quarrel_C1',
+                    'A13Chore_G1']
     },
     {
         'find': r'\bHe\b',
@@ -155,7 +161,8 @@ rules = [
                     'A12TalkBHG4',
                     'A13Quarrel_T1',
                     'A13Quarrel_P1',
-                    'A13Quarrel_C1']
+                    'A13Quarrel_C1',
+                    'A13Chore_G1']
     },
     {
         'find': r'\bhis\b',
