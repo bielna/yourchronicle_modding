@@ -92,6 +92,11 @@ rules = [
         'include': ['C6SigurdsSoliloquyFather']
     },
     {
+        'find': r"\bHe's\b",
+        'replace': '__MC_PRONOUN_SUBJECT_BE_CAPITAL__',
+        'include': ['C6SpearmansSoliloquy']
+    },
+    {
         'find': r"\bhe's been\b",
         'replace': '__MC_PRONOUN_SUBJECT_HAVE_BEEN__',
         'include': ['C6SigurdsSoliloquyDestiny']
@@ -184,6 +189,11 @@ rules = [
         'include': ['talkSpearsmithA',
                     'training_roomG',
                     'swordClassAdvanced']
+    },
+    {
+        'find': r'\bspearman\b',
+        'replace': '__SPEAR_USER_TERM__',
+        'include': ['talkSpearsmithD']
     },
     {
         'find': r'\bA ladykiller\b',

@@ -78,6 +78,11 @@ templates = {
         'feminine': 'she is',
         'neutral': 'they are'
     },
+    '__MC_PRONOUN_SUBJECT_BE_CAPITAL__': {
+        'masculine': "He's",
+        'feminine': "She's",
+        'neutral': "They're"
+    },
     '__MC_PRONOUN_SUBJECT_HAVE_BEEN__': {
         'masculine': "he's been",
         'feminine': "she's been",
@@ -147,6 +152,11 @@ templates = {
         'masculine': 'swordsman',
         'feminine': 'swordswoman',
         'neutral': 'swordfighter'
+    },
+    '__SPEAR_USER_TERM__': {
+        'masculine': 'spearman',
+        'feminine': 'spearwoman',
+        'neutral': 'spearfighter'
     },
     '__STRONG_TERM_CAPITAL__': {
         'masculine': 'A ladykiller',
