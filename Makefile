@@ -1,5 +1,6 @@
 GAME_FOLDER := /mnt/c/Program Files (x86)/Steam/steamapps/common/YourChronicle/YourChronicle_Data
 ASSETS_FILE := resources.assets
+REWRITTEN_ASSETS_FILE := resources_with_rewritten_events.assets
 
 INPUTS := inputs
 PROCESSED := processed
@@ -12,9 +13,9 @@ GAME_VERSION := 2.7.12
 BACKUP_FILE := $(GAME_FOLDER)/$(ASSETS_FILE)_backup_$(GAME_VERSION)
 
 
-.PHONY: all feminine neutral masculine setup copy transform check backup replace clean
+.PHONY: all feminine neutral masculine setup copy transform rewrite-events check backup replace replace-base package clean
 
-all: copy transform replace
+all: copy transform rewrite-events replace
 
 feminine: TARGET := feminine
 feminine: all
@@ -37,6 +38,9 @@ transform:
 	python 03_replace_templates_with_text.py
 	python 04_repack_assets.py
 	python 05_additional_patch.py
+
+rewrite-events:
+	python 06_rewrite_events.py
 
 check:
 	@for name in "[Translation]Upgrade_Action_Name" "[Translation]Dungeon_DungeonName" "[Translation]Title_Name" "[Translation]Routine_Name"; do \
@@ -67,14 +71,18 @@ restore:
 		echo "No backup found for $(GAME_VERSION), nothing restored"; \
 	fi
 
-replace: backup check
+replace: backup check rewrite-events
+	cp "$(OUTPUTS)/assets_$(TARGET)/$(REWRITTEN_ASSETS_FILE)" "$(GAME_FOLDER)/$(ASSETS_FILE)"
+
+replace-base: backup check
 	cp "$(OUTPUTS)/assets_$(TARGET)/$(ASSETS_FILE)" "$(GAME_FOLDER)/$(ASSETS_FILE)"
 
 package:
 	@for target in feminine neutral masculine; do \
 		echo "Creating yourchronicle_patch_$(PACKAGE_VERSION)_$$target.zip"; \
 		zip -j "yourchronicle_patch_$(PACKAGE_VERSION)_$$target.zip" \
-		"outputs/assets_$$target/resources.assets"; \
+		"$(OUTPUTS)/assets_$$target/$(ASSETS_FILE)" \
+		"$(OUTPUTS)/assets_$$target/$(REWRITTEN_ASSETS_FILE)"; \
 	done
 
 clean:
